@@ -1,25 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
-
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Login from "./components/Login";
+import Dashboard from "./components/Dashboard";
+import Timetable from "./components/Timetable";  // ✅ Correct Import
+import Students from './components/Students'; 
+import StudentDashboard from "./components/StudentDashboard";
+import Faculty from './components/Faculty';
+const App = () => {
+    return (
+        <Router>
+            <Routes>
+                <Route path="/" element={<Login />} />
+                <Route path="/dashboard" element={<Dashboard />} />
+                <Route path="/students" element={<Students />} />
+                <Route path="/faculty" element={<Faculty />} />
+                <Route path="/attendance" element={<h1>Attendance Page</h1>} />
+                <Route path="/view-attendance" element={<h1>View Attendance Page</h1>} />
+                <Route path="/timetable" element={<Timetable />} /> 
+                <Route path="/student/:id" element={<StudentDashboard />} />
+            </Routes>
+        </Router>
+    );
+};
 
 export default App;
